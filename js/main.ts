@@ -1,7 +1,14 @@
-function sum(a: number, b: number): number {
-    return a + b;
+interface Product {
+  name: string
+  price: number
+  availability: boolean
 }
 
-// Example usage:
-const result = sum(10, 10);
-console.log(result); // Output: 8
+const checkData = (data: Product): string => {
+  const inStock = data.availability ? 'Yes' : 'No'
+  return `Product: ${data.name}, price: ${data.price} UAH, availability: ${inStock}`
+}
+
+const product1 = { name: 'Bear', price: 200, availability: true }
+
+console.log(checkData(product1))
