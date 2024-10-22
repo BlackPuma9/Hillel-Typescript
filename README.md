@@ -10,6 +10,6 @@
 
 ## HW1. Get Avarage Value
 
-Write a function that takes an array of numbers and returns their average value.
+Write a function that takes an array of arrayData and returns their average value.
 
 
