@@ -1,26 +1,25 @@
 # Hillel Typescript
 
-### Step 1 — Starting the TypeScript Project
-**npm i typescript --save-dev**
+### Step 1 — Package.json
 
-It is important to include the --save-dev flag because it saves TypeScript as a development dependency. This means that TypeScript is required for the development of your project.
+**npm start**
 
-With TypeScript installed, you can initialize your TypeScript project by using the following command:
+### Step 2 — Package.json
 
-**npx tsc --init**
+**npm start-server**
 
-[Link](https://github.com/VladimirShaitan/TypeScript-Lessons/blob/Lesson-1/practice/tsconfig.json) to file how should be tsconfig.json set up.
+## HW7. ReverseArray
 
-### Step 2 — Compiling the TypeScript Project
+The function takes an array as an argument and reverses it Array.prototype.reverse
 
-You can now begin coding your TypeScript project. Open a new file named index.ts in your editor. Write the following TypeScript code in index.ts:
+IMPORTANT
 
-**let fst: (a: any, b: any) => any = (a, b) => a;**
+The function should change the input array, not create a new one 
 
-With this TypeScript code in place, your project is ready to be compiled. Run tsc from your project’s directory:
+`const arr = [1, 2, 3]
+`
 
-**npx tsc**
+`const reversedArr = reverseArray(arr)
+`
 
-You can activate watch mode using the following command:
-**npx tsc -w**
-
+`reversedArr === arr // true`
