@@ -1,26 +1,39 @@
 # Hillel Typescript
 
-### Step 1 — Starting the TypeScript Project
-**npm i typescript --save-dev**
+### Step 1 — Package.json
 
-It is important to include the --save-dev flag because it saves TypeScript as a development dependency. This means that TypeScript is required for the development of your project.
+**npm start**
 
-With TypeScript installed, you can initialize your TypeScript project by using the following command:
+### Step 2 — Package.json
 
-**npx tsc --init**
+**npm start-server**
 
-[Link](https://github.com/VladimirShaitan/TypeScript-Lessons/blob/Lesson-1/practice/tsconfig.json) to file how should be tsconfig.json set up.
+## HW8. Checking a string for forbidden words with highlighting
 
-### Step 2 — Compiling the TypeScript Project
+Write a function highlightForbiddenWords that takes a string and an array of forbidden words. If it finds a forbidden word in the string, it wraps it in a `<del>` tag that will strike out the word.
 
-You can now begin coding your TypeScript project. Open a new file named index.ts in your editor. Write the following TypeScript code in index.ts:
+The function should return an updated string, ready to be displayed in HTML.
+Also create a simple HTML page to display the result.
 
-**let fst: (a: any, b: any) => any = (a, b) => a;**
+**Function requirements:**
 
-With this TypeScript code in place, your project is ready to be compiled. Run tsc from your project’s directory:
+The function must take two parameters:
 
-**npx tsc**
+1. text: string - the string to be checked.
+2. forbiddenWords: string[] - an array of forbidden words.
 
-You can activate watch mode using the following command:
-**npx tsc -w**
+The function should return an updated string in which all found forbidden words will be wrapped in the <del> tag.
 
+`const text = "This is a test sentence with some bad words.";`
+
+`const forbiddenWords = ["bad", "test"];`
+
+`const result = highlightForbiddenWords(text, forbiddenWords);`
+
+`console.log(result); // "This is a <del>test</del> sentence with some <del>bad</del> words."`
+
+**Task:**
+
+1. Implement the highlightForbiddenWords function in TypeScript.
+2. Add an HTML interface that allows you to enter a string and forbidden words.
+3. Implement the logic to update the DOM tree to reflect the modified string with the forbidden words strikethrough.
