@@ -22,7 +22,7 @@ The function must take two parameters:
 1. text: string - the string to be checked.
 2. forbiddenWords: string[] - an array of forbidden words.
 
-The function should return an updated string in which all found forbidden words will be wrapped in the <del> tag.
+The function should return an updated string in which all found forbidden words will be wrapped in the `<del>` tag.
 
 `const text = "This is a test sentence with some bad words.";`
 

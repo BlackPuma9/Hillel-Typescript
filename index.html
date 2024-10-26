@@ -11,7 +11,19 @@
 </head>
 <body>
 
-<h1>Hello World!</h1>
+<h1>Welcome to the page</h1>
+
+<form id="textForm">
+  <label for="textField">Enter your text:</label><br>
+  <textarea id="textField" name="textField" rows="4" cols="50"></textarea><br><br>
+
+  <label for="forbiddenWords">Enter forbidden words (separated by commas):</label><br>
+  <textarea id="forbiddenWords" name="forbiddenWords" rows="4" cols="50"></textarea><br><br>
+
+  <input type="submit" value="Submit">
+</form>
+
+<div id="resultPlaceholder"></div>
 
 <script src="./dist/main.js"></script>
 </body>
