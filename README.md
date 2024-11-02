@@ -17,7 +17,7 @@
 
 **Task 2. Creating types with nested interfaces**
 1. Write the `Product` interface with the following fields: `name` (string), `price` (number), `category` (an object containing `categoryName` and `categoryId`).
-2. Add an `Order` interface that contains `orderId`, `userId`, and a list of products (`Product` array).
+2. Add an `Order` interface that contains `orderId`, `userId`, and a list of productList (`Product` array).
 3. Create a type for this array of such orders and model several examples.
 
 **Task 3. Optional properties**
