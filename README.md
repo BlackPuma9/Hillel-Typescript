@@ -1,26 +1,33 @@
 # Hillel Typescript
 
-### Step 1 — Starting the TypeScript Project
-**npm i typescript --save-dev**
+### Step 1 — Package.json
 
-It is important to include the --save-dev flag because it saves TypeScript as a development dependency. This means that TypeScript is required for the development of your project.
+**npm start**
 
-With TypeScript installed, you can initialize your TypeScript project by using the following command:
+### Step 2 — Package.json
 
-**npx tsc --init**
+**npm start-server**
 
-[Link](https://github.com/VladimirShaitan/TypeScript-Lessons/blob/Lesson-1/practice/tsconfig.json) to file how should be tsconfig.json set up.
+## HW9. Types && Interfaces
 
-### Step 2 — Compiling the TypeScript Project
+**Task 1. Extension and merging interfaces**
+1. Create two interfaces `Address` with the properties `street`, `city`, `zipCode` and `User` with the properties `name` and `age`
+2. Create a third interface, `UserWithAddress`, that combines `User` and `Address`.
+3. Add an `email` property to this new interface and test it
 
-You can now begin coding your TypeScript project. Open a new file named index.ts in your editor. Write the following TypeScript code in index.ts:
+**Task 2. Creating types with nested interfaces**
+1. Write the `Product` interface with the following fields: `name` (string), `price` (number), `category` (an object containing `categoryName` and `categoryId`).
+2. Add an `Order` interface that contains `orderId`, `userId`, and a list of products (`Product` array).
+3. Create a type for this array of such orders and model several examples.
 
-**let fst: (a: any, b: any) => any = (a, b) => a;**
+**Task 3. Optional properties**
+1. Create a `Person` interface that contains the required property `firstName`, `lastName` and the optional field `middleName`.
+2. Write a function that accepts type object `Person` as a parameter and returns a string containing the full name, if middleName exists.
 
-With this TypeScript code in place, your project is ready to be compiled. Run tsc from your project’s directory:
-
-**npx tsc**
-
-You can activate watch mode using the following command:
-**npx tsc -w**
-
+**Task 4. Create an interface to read the settings**
+1. Describe the `Settings` interface, which contains properties for configuring the program:
+   1. `theme`:a string (can be “light” or “dark”).
+   2. `notifications`: a boolean value.
+   3. `autoSave`: an object with property `enabled` (boolean value) and `interval` (number).
+   
+2. Write an `applySettings` function that accepts an object type `Settings` and performs actions depending on the settings values (for example, displays a message about enabling/disabling notifications).
