@@ -1,26 +1,63 @@
 # Hillel Typescript
 
-### Step 1 — Starting the TypeScript Project
-**npm i typescript --save-dev**
+### Step 1 — Package.json
 
-It is important to include the --save-dev flag because it saves TypeScript as a development dependency. This means that TypeScript is required for the development of your project.
+**npm start**
 
-With TypeScript installed, you can initialize your TypeScript project by using the following command:
+### Step 2 — Package.json
 
-**npx tsc --init**
+**npm start-server**
 
-[Link](https://github.com/VladimirShaitan/TypeScript-Lessons/blob/Lesson-1/practice/tsconfig.json) to file how should be tsconfig.json set up.
+## HW10. Generics
 
-### Step 2 — Compiling the TypeScript Project
+Write a `filterByProperty` function that takes an array of objects and a property name and returns a new array of objects that have this property. The property type must match the type passed in the parameter due to generics.
 
-You can now begin coding your TypeScript project. Open a new file named index.ts in your editor. Write the following TypeScript code in index.ts:
+**Conditions:**
 
-**let fst: (a: any, b: any) => any = (a, b) => a;**
+1. The function must be of the following type:
 
-With this TypeScript code in place, your project is ready to be compiled. Run tsc from your project’s directory:
+`function filterByProperty<T, K extends keyof T>(array: T[], property: K, value: T[K]): T[]`
 
-**npx tsc**
+**T** is the type of objects in the array.
 
-You can activate watch mode using the following command:
-**npx tsc -w**
+**K** - the name of the property that must be present in the objects of the array.
+
+**value** - the value that this property must have in order for the object to be included in the resulting array.
+
+Example of use
+
+`type User = {
+id: number;
+name: string;
+age: number;
+isActive: boolean;
+};`
+
+`const users: User[] = [
+{ id: 1, name: 'Alice', age: 25, isActive: true },
+{ id: 2, name: 'Bob', age: 30, isActive: false },
+{ id: 3, name: 'Charlie', age: 35, isActive: true },
+];
+`
+
+How to use the function
+
+`const activeUsers = filterByProperty(users, 'isActive', true);
+console.log(activeUsers);
+// Результат: [
+//   { id: 1, name: 'Alice', age: 25, isActive: true },
+//   { id: 3, name: 'Charlie', age: 35, isActive: true }
+// ]`
+
+**Explanation**
+
+- The `filterByProperty` function uses the generics `T` and `K`.
+- T - the type of elements in the array.
+- `K extends keyof T` - allows you to use only those keys that are in the type `T`.
+- `T[K]` - the type of value that we compare with the passed `value`.
+  
+**How it works**
+
+- The `filterByProperty` function checks each object in the array to determine if the `property` property has a value equal to `value`.
+- The result is a new array containing only objects that meet the conditions.
 
