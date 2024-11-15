@@ -71,7 +71,7 @@ console.log(studentGrades2)
 const getAverageGrade = (
   subject: Subject,
   universityRecord: UniversityRecord[],
-) => {
+): number | string => {
   let totalGrade = 0
   let studentCount = 0
 
