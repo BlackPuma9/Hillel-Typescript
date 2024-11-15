@@ -1,26 +1,34 @@
 # Hillel Typescript
 
-### Step 1 — Starting the TypeScript Project
-**npm i typescript --save-dev**
+### Step 1 — Package.json
 
-It is important to include the --save-dev flag because it saves TypeScript as a development dependency. This means that TypeScript is required for the development of your project.
+**npm start**
 
-With TypeScript installed, you can initialize your TypeScript project by using the following command:
+### Step 2 — Package.json
 
-**npx tsc --init**
+**npm start-server**
 
-[Link](https://github.com/VladimirShaitan/TypeScript-Lessons/blob/Lesson-1/practice/tsconfig.json) to file how should be tsconfig.json set up.
+## HW11. Implementation of the Data Model using Record
 
-### Step 2 — Compiling the TypeScript Project
+**Description**
 
-You can now begin coding your TypeScript project. Open a new file named index.ts in your editor. Write the following TypeScript code in index.ts:
+Imagine that you are developing a university management system. 
+You need to create a model to store information about students and their grades 
+in different subjects. In this model, you will use `Record` to conveniently 
+manipulate the information.
 
-**let fst: (a: any, b: any) => any = (a, b) => a;**
+**Details**
 
-With this TypeScript code in place, your project is ready to be compiled. Run tsc from your project’s directory:
+1. Create the `Student` interface, which contains the following fields:
+* `id` - unique identifier of the student (string).
+* `name` - the name of the student (string).
+* `age` - age of the student (number).
 
-**npx tsc**
-
-You can activate watch mode using the following command:
-**npx tsc -w**
-
+1. Create a `Subject` type that will represent possible subjects, for example: `Math`, `Science`, `Literature`, `History`.
+2. Create a type `Grades`, which will be `Record<Subject, number>`. This will be an object where the keys will be subjects, and the values will be the student's grades for each of the subjects (values of type `number` from 0 to 100).
+3. Create an interface `UniversityRecord`, which contains fields:
+   * `students` - an object of type `Record<string, Student>`, where the key is the student `id`, and the value is an object of type `Student`.
+   * `grades` - an object of type `Record<string, Grades>`, where the key is the student `id` and the value is an object of type `Grades`, which stores the student's grades by subject.
+4. Create multiple `UniversityRecord` test records by adding several students and their grades in different subjects.
+5. Write a `getStudentGrades` function that takes a `universityRecord: UniversityRecord` and `studentId: string`, and returns the student's grades by subject.
+6. Write a `getAverageGrade` function that takes a `universityRecord: UniversityRecord` and `subject: Subject`, and returns the average grade of all students in the specified subject.
