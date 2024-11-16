@@ -1,26 +1,37 @@
 # Hillel Typescript
 
-### Step 1 — Starting the TypeScript Project
-**npm i typescript --save-dev**
+### Step 1 — Package.json
 
-It is important to include the --save-dev flag because it saves TypeScript as a development dependency. This means that TypeScript is required for the development of your project.
+**npm start**
 
-With TypeScript installed, you can initialize your TypeScript project by using the following command:
+### Step 2 — Package.json
 
-**npx tsc --init**
+**npm start-server**
 
-[Link](https://github.com/VladimirShaitan/TypeScript-Lessons/blob/Lesson-1/practice/tsconfig.json) to file how should be tsconfig.json set up.
+## HW12. Managing Orders Using enum
 
-### Step 2 — Compiling the TypeScript Project
+**Description**
 
-You can now begin coding your TypeScript project. Open a new file named index.ts in your editor. Write the following TypeScript code in index.ts:
+Let's imagine that you are creating a system for managing orders in an online store. In this system, you need to use `enums` to represent different order statuses and payment types.
 
-**let fst: (a: any, b: any) => any = (a, b) => a;**
+**Details**
 
-With this TypeScript code in place, your project is ready to be compiled. Run tsc from your project’s directory:
-
-**npx tsc**
-
-You can activate watch mode using the following command:
-**npx tsc -w**
-
+1. Create an `enum` `OrderStatus` that will represent the possible order statuses:
+* `Pending` - the order is waiting for confirmation.
+* `Processing` - the order is being processed.
+* `Shipped` - the order has been sent.
+* `Delivered` - the order has been delivered.
+* `Canceled` - the order is canceled.
+1. Create an `enum` `PaymentType` that will represent the types of payment:
+* `CreditCard` - payment by credit card.
+* `PayPal` - payment via PayPal.
+* `BankTransfer` - payment by bank transfer.
+* `CashOnDelivery` - payment upon delivery.
+1. Create an `Order` interface that contains fields:
+* `id` - a unique identifier of the order (of type string).
+* `amount` - the total amount of the order (of type number).
+* `status` - the status of the order (of type OrderStatus).
+* `paymentType` - type of payment (of type PaymentType).
+1. Create several orders to test the system using `OrderStatus` and `PaymentType`.
+2. Write an `updateOrderStatus` function that accepts an `order: Order` and `status: OrderStatus`, updates the status of the order, and displays a message in the console about the status change.
+3. Write a `getOrdersByStatus` function that takes an array of `orders: Order[]` and `status: OrderStatus`, and returns all orders with the corresponding status.
