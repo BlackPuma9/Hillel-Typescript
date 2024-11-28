@@ -1,14 +1,9 @@
-'use strict'
-
-export class BaseModel {
-  constructor() {
-    if (new.target === BaseModel) {
-      throw new TypeError('Cannot construct BaseModel instances directly')
-    }
-    this.createdAt = new Date()
-  }
+class BaseModel {
+  createAt = Date.now()
 
   validate() {
-    throw new Error("Method 'validate()' must be implemented")
+    throw new Error('This method must be implemented in child class')
   }
 }
+
+export default BaseModel

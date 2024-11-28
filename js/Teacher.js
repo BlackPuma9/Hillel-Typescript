@@ -1,14 +1,20 @@
-'use strict'
+import User from './User.js'
+import Course from './Course.js'
 
-import { User } from './User.js'
+class Teacher extends User {
+  #subjects = []
 
-export class Teacher extends User {
-  constructor(name, email, password) {
-    super(name, email, password)
-    this.subjects = []
+  get subjects() {
+    return Object.freeze(this.#subjects)
   }
 
   addSubject(subject) {
-    this.subjects.push(subject)
+    if (!Course.isCourse(subject)) {
+      throw new Error('Subject is not valid')
+    }
+
+    this.#subjects.push(subject)
   }
 }
+
+export default Teacher

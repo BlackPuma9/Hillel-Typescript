@@ -1,14 +1,19 @@
-'use strict'
+import User from './User.js'
+import Course from './Course.js'
+class Student extends User {
+  #courses = []
 
-import { User } from './User.js'
-
-export class Student extends User {
-  constructor(name, email, password) {
-    super(name, email, password)
-    this.courses = []
+  get courses() {
+    return Object.freeze(this.#courses)
   }
 
   enroll(course) {
-    this.courses.push(course)
+    if (!Course.isCourse(course)) {
+      throw new Error('arg should be an instance of class Course')
+    }
+
+    this.#courses.push(course)
   }
 }
+
+export default Student

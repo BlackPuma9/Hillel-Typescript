@@ -1,25 +1,37 @@
-'use strict'
+import Student from './Student.js'
+import BaseModel from './BaseModel.js'
 
-import { Student } from './Student.js'
-import { BaseModel } from './BaseModel.js'
+class Course extends BaseModel {
+  static isCourse(obj) {
+    return obj instanceof Course
+  }
 
-export class Course extends BaseModel {
-  static nextId = 1
-  #students
+  static #currentId = 1
 
-  constructor(name, teacher) {
+  #id = 0
+  name = null
+  teacher = null
+  #students = []
+
+  constructor({ name, teacher }) {
     super()
-    this.id = Course.nextId++
     this.name = name
     this.teacher = teacher
-    this.#students = []
+    this.#id = Course.#currentId
+    Course.#currentId += 1
+  }
+
+  get id() {
+    return this.#id
   }
 
   addStudent(student) {
-    if (student instanceof Student) {
-      this.#students.push(student)
-    } else {
+    if (!(student instanceof Student)) {
       throw new Error('Invalid student. Must be an instance of Student class.')
+    }
+    const result = this.#students.find(s => s.id === student.id)
+    if (!result) {
+      this.#students.push(student)
     }
   }
 
@@ -28,12 +40,14 @@ export class Course extends BaseModel {
   }
 
   listStudents() {
-    return this.#students.map(student => student.info)
+    return Object.freeze(this.#students)
   }
 
   validate() {
-    if (!this.name || !this.teacher) {
-      throw new Error('Course validation failed: name and teacher are required')
+    if (!this.teacher) {
+      throw new Error('Teacher must be not empty.')
     }
   }
 }
+
+export default Course

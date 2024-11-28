@@ -1,47 +1,57 @@
-'use strict'
+import User from './User.js'
+import Student from './Student.js'
+import Teacher from './Teacher.js'
+import Course from './Course.js'
+import CourseManager from './CourseManager.js'
 
-import { Teacher } from './Teacher.js'
-import { Student } from './Student.js'
-import { Course } from './Course.js'
-import { CourseManager } from './CourseManager.js'
+const u = new User({ name: 'John', email: 'john@gmail.com' })
+u.changePassword('John1997', User.passwordStrength.MEDIUM)
 
-const courseManager = new CourseManager()
+const student1 = new Student({ name: 'Alice', email: 'alice@gmail.com' })
+const student2 = new Student({ name: 'Anna', email: 'anna@gmail.com' })
+const student3 = new Student({ name: 'Van Gogh', email: 'vania@gmail.com' })
 
-const teacher1 = new Teacher('Teacher1', 'teacher1@gmail.com', 't1')
-const teacher2 = new Teacher('Teacher2', 'teacher1@gmail.com', 't2')
+const teacher1 = new Teacher({ name: 'Teacher1', email: 't1@gmail.com' })
+const teacher2 = new Teacher({ name: 'Teacher2', email: 't2@gmail.com' })
+const teacher3 = new Teacher({ name: 'Teacher3', email: 't3@gmail.com' })
 
-const student1 = new Student('Student1', 'stud1@gmail.com', 's1')
-const student2 = new Student('Student2', 'stud2@gmail.com', 's2')
-const student3 = new Student('Student3', 'stud3@gmail.com', 's3')
+const course1 = new Course({ name: 'Math', teacher: teacher1 })
+const course2 = new Course({ name: 'Historia', teacher: teacher2 })
+const course3 = new Course({ name: 'Physics', teacher: teacher3 })
 
-courseManager.addUser(teacher1)
-courseManager.addUser(teacher2)
-courseManager.addUser(student1)
-courseManager.addUser(student2)
-courseManager.addUser(student3)
+course1.addStudent(student1)
+course1.addStudent(student2)
+course1.addStudent(student3)
+course2.addStudent(student2)
+course3.addStudent(student3)
 
-const course1 = new Course('Math', teacher1)
-const course2 = new Course('History', teacher2)
-const course3 = new Course('Physics', teacher1)
+course1.removeStudent(student2.id)
 
-// Add courses to the system
-courseManager.addCourse(course1)
-courseManager.addCourse(course2)
-courseManager.addCourse(course3)
+console.log(course1.listStudents())
 
-// Assign teachers to courses
-courseManager.assignTeacherToCourse(course1.id, teacher1.id)
-courseManager.assignTeacherToCourse(course2.id, teacher2.id)
-courseManager.assignTeacherToCourse(course3.id, teacher1.id)
+const courseManagar = new CourseManager()
+courseManagar.addCourse(course1)
+courseManagar.addCourse(course2)
+courseManagar.addCourse(course3)
 
-// Enroll students to courses
-courseManager.enrollStudentToCourse(course1.id, student1.id)
-courseManager.enrollStudentToCourse(course1.id, student2.id)
-courseManager.enrollStudentToCourse(course2.id, student2.id)
-courseManager.enrollStudentToCourse(course2.id, student3.id)
-courseManager.enrollStudentToCourse(course3.id, student1.id)
-courseManager.enrollStudentToCourse(course3.id, student3.id)
+courseManagar.addUser(teacher1)
+courseManagar.addUser(teacher2)
+courseManagar.addUser(teacher3)
+courseManagar.addUser(student1)
+courseManagar.addUser(student2)
+courseManagar.addUser(student3)
 
-// Generate and display the report
-const report = CourseManager.generateReport()
-console.log(report)
+courseManagar.assignTeacherToCourse(1, 5)
+courseManagar.assignTeacherToCourse(2, 6)
+courseManagar.assignTeacherToCourse(3, 7)
+
+courseManagar.enrollStudentToCourse(1, 2)
+courseManagar.enrollStudentToCourse(2, 3)
+courseManagar.enrollStudentToCourse(3, 4)
+
+console.log(courseManagar.generateReport())
+
+// console.log(u)
+// console.log(student1)
+// console.log(student2)
+// console.log(student3)
