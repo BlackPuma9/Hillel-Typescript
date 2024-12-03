@@ -1,7 +1,9 @@
 {
   "scripts": {
     "start": "npx tsc -w",
-    "start-server": "npx live-server"
+    "start-server": "npx live-server",
+    "tsc": "tsc -t es5",
+    "build" : "webpack --mode production"
   },
   "devDependencies": {
     "@eslint/js": "^9.13.0",
@@ -9,7 +11,11 @@
     "eslint": "^9.13.0",
     "live-server": "^1.2.2",
     "prettier": "^3.3.3",
+    "ts-loader": "^9.5.1",
     "typescript": "^5.6.3",
-    "typescript-eslint": "^8.11.0"
+    "typescript-eslint": "^8.11.0",
+    "webpack": "^5.90.3",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.0.2"
   }
 }
